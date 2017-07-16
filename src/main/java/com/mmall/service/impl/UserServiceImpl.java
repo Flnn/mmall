@@ -29,15 +29,15 @@ public class UserServiceImpl implements IUserService {
     private UserMapper userMapper;
 
     @Override
-    public ServerResponse<User> login(String userName, String password) {
-        int resultCount = userMapper.checkUserName(userName);
+    public ServerResponse<User> login(String username, String password) {
+        int resultCount = userMapper.checkUserName(username);
         if (resultCount == 0) {
             return ServerResponse.createByErrorMessage("用户不存在");
         }
 
         //密码MD5加密
         String md5Password = MD5Util.MD5EncodeUtf8(password);
-        User user = userMapper.selectLogin(userName, md5Password);
+        User user = userMapper.selectLogin(username, md5Password);
         if (user == null) {
             return ServerResponse.createByErrorMessage("密码错误");
         }

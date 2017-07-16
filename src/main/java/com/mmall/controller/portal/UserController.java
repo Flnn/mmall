@@ -27,8 +27,8 @@ public class UserController {
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<User> login(String userName, String password, HttpSession session) {
-        ServerResponse<User> response = iUserService.login(userName, password);
+    public ServerResponse<User> login(String username, String password, HttpSession session) {
+        ServerResponse<User> response = iUserService.login(username, password);
         if (response.isSuccess()) {
             response.getData().setPassword(StringUtils.EMPTY);
             session.setAttribute(Const.CURRENT_USER, response.getData());
@@ -95,7 +95,7 @@ public class UserController {
      * @param username
      * @return
      */
-    @RequestMapping(value = "getUserInfo", method = RequestMethod.POST)
+    @RequestMapping(value = "forgetGetQuestion", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> forgetGetQuestion(String username){
         return iUserService.selectQuestion(username);
