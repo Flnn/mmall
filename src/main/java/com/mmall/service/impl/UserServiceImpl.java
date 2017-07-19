@@ -201,4 +201,13 @@ public class UserServiceImpl implements IUserService {
             return ServerResponse.createBySuccess(user);
         }
     }
+
+    /**
+     * 检查是否是管理员用户
+     * @param user
+     * @return
+     */
+    public ServerResponse checkAdminRole(User user){
+        return null;
+    }
 }
