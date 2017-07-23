@@ -42,10 +42,9 @@ public class CategoryManageController {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), "用户未登录");
         }
         //检查是否是管理员
-        if("1".equals(user.getRole())){
-            //是管理员，增加处理分类的逻辑 TODO
-
-            return null;
+        if("1".equals(user.getRole().toString())){
+            //是管理员，增加处理分类的逻辑
+            return iCategoryService.addCategory(categoryName, parentId);
         }else{
             return ServerResponse.createByErrorMessage("无权限操作，需要管理员权限");
         }
@@ -66,7 +65,7 @@ public class CategoryManageController {
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"用户未登录，请登录");
         }
-        if("1".equals(user.getRole())){
+        if("1".equals(user.getRole().toString())){
             return iCategoryService.updateCategoryName(categoryId, categoryName);
         }else{
             return ServerResponse.createByErrorMessage("无权限操作，需要管理员权限");
@@ -87,7 +86,7 @@ public class CategoryManageController {
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"用户未登录，请登录");
         }
-        if("1".equals(user.getRole())){
+        if("1".equals(user.getRole().toString())){
             return iCategoryService.getChildrenParallelCategory(categoryId);
         }else{
             return ServerResponse.createByErrorMessage("无权限操作，需要管理员权限");
@@ -108,7 +107,7 @@ public class CategoryManageController {
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"用户未登录，请登录");
         }
-        if("1".equals(user.getRole())){
+        if("1".equals(user.getRole().toString())){
             return iCategoryService.selectCategoryAndChildrenById(categoryId);
         }else{
             return ServerResponse.createByErrorMessage("无权限操作，需要管理员权限");
