@@ -9,9 +9,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by geely
- */
+
 public class FTPUtil {
 
     private static  final Logger logger = LoggerFactory.getLogger(FTPUtil.class);
@@ -30,7 +28,7 @@ public class FTPUtil {
         FTPUtil ftpUtil = new FTPUtil(ftpIp,21,ftpUser,ftpPass);
         logger.info("开始连接ftp服务器");
         boolean result = ftpUtil.uploadFile("img",fileList);
-        logger.info("开始连接ftp服务器,结束上传,上传结果:{}");
+        logger.info("结束上传,上传结果:{}",result);
         return result;
     }
 
@@ -49,6 +47,7 @@ public class FTPUtil {
                 for(File fileItem : fileList){
                     fis = new FileInputStream(fileItem);
                     ftpClient.storeFile(fileItem.getName(),fis);
+                    logger.info("上传文件名：{} ， 上传结果：{}", fileItem.getName(), ftpClient.getReplyString());
                 }
 
             } catch (IOException e) {
@@ -59,6 +58,8 @@ public class FTPUtil {
                 fis.close();
                 ftpClient.disconnect();
             }
+        }else{
+            logger.error("连接FTP服务器失败!!!");
         }
         return uploaded;
     }
