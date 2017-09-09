@@ -7,14 +7,10 @@ import com.mmall.dao.UserMapper;
 import com.mmall.pojo.User;
 import com.mmall.service.IUserService;
 import com.mmall.util.MD5Util;
-import com.mysql.fabric.Server;
-import jdk.nashorn.internal.parser.Token;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.attribute.standard.Media;
-import javax.print.attribute.standard.Severity;
 import java.util.UUID;
 
 /**
