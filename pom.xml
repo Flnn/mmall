@@ -245,6 +245,14 @@
       <artifactId>jedis</artifactId>
       <version>2.9.0</version>
     </dependency>
+
+    <!--引入自定义的jedis封装-->
+    <dependency>
+      <groupId>jffeng1</groupId>
+      <artifactId>redis-client</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
   </dependencies>
 
 
